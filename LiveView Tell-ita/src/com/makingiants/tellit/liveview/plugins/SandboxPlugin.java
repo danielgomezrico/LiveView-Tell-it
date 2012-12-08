@@ -35,6 +35,7 @@ import android.graphics.Typeface;
 import android.os.Handler;
 import android.os.IBinder;
 import android.telephony.SmsManager;
+import android.util.Log;
 
 import com.google.analytics.tracking.android.EasyTracker;
 import com.google.analytics.tracking.android.Tracker;
@@ -81,8 +82,6 @@ public class SandboxPlugin extends AbstractPluginService {
 	// Google Analitics tracker
 	private Tracker myExistingTracker;
 	
-	private boolean notStarted = true;
-	
 	// ****************************************************************
 	// Service Overrides
 	// ****************************************************************
@@ -91,7 +90,7 @@ public class SandboxPlugin extends AbstractPluginService {
 	public void onStart(final Intent intent, final int startId) {
 		super.onStart(intent, startId);
 		
-		if (notStarted) {
+		if (handler == null) {
 			
 			// Init main handler
 			handler = new Handler();
@@ -139,7 +138,6 @@ public class SandboxPlugin extends AbstractPluginService {
 			callManager.updateContacts(this.getApplicationContext());
 		}
 		
-		notStarted = false;
 		showingSendImage = false;
 		
 	}
@@ -286,102 +284,110 @@ public class SandboxPlugin extends AbstractPluginService {
 	 */
 	protected void button(final String buttonType, final boolean doublepress, final boolean longpress) {
 		
-		if (callManager.getContactsLength() != 0) {
-			if (!showingSendImage) {
-				if (buttonType.equalsIgnoreCase(PluginConstants.BUTTON_UP)) {
-					
-					final Contact call = callManager.getPreviousContact();
-					String message = messageManager.getActualMessage();
-					
-					if (message == null) {
-						message = getString(R.string.plugin_message_no_messages);
-					}
-					
-					PluginUtils.sendScaledImage(mLiveViewAdapter, mPluginId,
-					        getBackgroundBitmapWithCall(call, message));
-					
-				} else if (buttonType.equalsIgnoreCase(PluginConstants.BUTTON_DOWN)) {
-					
-					final Contact call = callManager.getNextContact();
-					String message = messageManager.getActualMessage();
-					
-					if (message == null) {
-						message = getString(R.string.plugin_message_no_messages);
-					}
-					
-					PluginUtils.sendScaledImage(mLiveViewAdapter, mPluginId,
-					        getBackgroundBitmapWithCall(call, message));
-					
-				} else if (buttonType.equalsIgnoreCase(PluginConstants.BUTTON_LEFT)) {
-					
-					final Contact call = callManager.getActualContact();
-					String message = messageManager.getPreviousMessage();
-					
-					if (message == null) {
-						message = getString(R.string.plugin_message_no_messages);
-					}
-					
-					PluginUtils.sendScaledImage(mLiveViewAdapter, mPluginId,
-					        getBackgroundBitmapWithCall(call, message));
-					
-				} else if (buttonType.equalsIgnoreCase(PluginConstants.BUTTON_RIGHT)) {
-					
-					final Contact call = callManager.getActualContact();
-					String message = messageManager.getNextMessage();
-					
-					if (message == null) {
-						message = getString(R.string.plugin_message_no_messages);
-					}
-					
-					PluginUtils.sendScaledImage(mLiveViewAdapter, mPluginId,
-					        getBackgroundBitmapWithCall(call, message));
-					
-				} else if (buttonType.equalsIgnoreCase(PluginConstants.BUTTON_SELECT)) {
-					
-					if (!showingSendImage) {
+		if (mSharedPreferences.getBoolean(PluginConstants.PREFERENCES_PLUGIN_ENABLED, false)) {
+			
+			if (callManager.getContactsLength() != 0) {
+				if (!showingSendImage) {
+					if (buttonType.equalsIgnoreCase(PluginConstants.BUTTON_UP)) {
 						
-						// Send message
+						final Contact call = callManager.getPreviousContact();
+						String message = messageManager.getActualMessage();
+						
+						if (message == null) {
+							message = getString(R.string.plugin_message_no_messages);
+						}
+						
+						PluginUtils.sendScaledImage(mLiveViewAdapter, mPluginId,
+						        getBackgroundBitmapWithCall(call, message));
+						
+					} else if (buttonType.equalsIgnoreCase(PluginConstants.BUTTON_DOWN)) {
+						
+						final Contact call = callManager.getNextContact();
+						String message = messageManager.getActualMessage();
+						
+						if (message == null) {
+							message = getString(R.string.plugin_message_no_messages);
+						}
+						
+						PluginUtils.sendScaledImage(mLiveViewAdapter, mPluginId,
+						        getBackgroundBitmapWithCall(call, message));
+						
+					} else if (buttonType.equalsIgnoreCase(PluginConstants.BUTTON_LEFT)) {
+						
 						final Contact call = callManager.getActualContact();
-						final String message = messageManager.getActualMessage();
+						String message = messageManager.getPreviousMessage();
 						
-						// Track how many messages sends
-						myExistingTracker
-						        .trackEvent("ui_action", "button_press", "message_sended", 0l);
+						if (message == null) {
+							message = getString(R.string.plugin_message_no_messages);
+						}
 						
-						if (call != null && message != null) {
+						PluginUtils.sendScaledImage(mLiveViewAdapter, mPluginId,
+						        getBackgroundBitmapWithCall(call, message));
+						
+					} else if (buttonType.equalsIgnoreCase(PluginConstants.BUTTON_RIGHT)) {
+						
+						final Contact call = callManager.getActualContact();
+						String message = messageManager.getNextMessage();
+						
+						if (message == null) {
+							message = getString(R.string.plugin_message_no_messages);
+						}
+						
+						PluginUtils.sendScaledImage(mLiveViewAdapter, mPluginId,
+						        getBackgroundBitmapWithCall(call, message));
+						
+					} else if (buttonType.equalsIgnoreCase(PluginConstants.BUTTON_SELECT)) {
+						
+						if (!showingSendImage) {
 							
-							showingSendImage = true;
-							mLiveViewAdapter.vibrateControl(mPluginId, 0, 200);
-							// Show send image
-							PluginUtils.sendScaledImage(mLiveViewAdapter, mPluginId, bitmapSend);
-							final SmsManager shortMessageManager = SmsManager.getDefault();
+							// Send message
+							final Contact call = callManager.getActualContact();
+							final String message = messageManager.getActualMessage();
 							
-							shortMessageManager.sendTextMessage(call.getNumber(), null, message, null,
-							        null);
-							
-							// Set the schedule to allow sending again and show send image for a while
-							handler.postDelayed(new Runnable() {
-								
-								public void run() {
-									final Contact call = callManager.getActualContact();
-									final String message = messageManager.getActualMessage();
+							if (call != null && message != null) {
+								try {
+									final SmsManager shortMessageManager = SmsManager.getDefault();
 									
+									shortMessageManager.sendTextMessage(call.getNumber(), null,
+									        message, null, null);
+									
+									// Track how many messages sends
+									myExistingTracker.trackEvent("ui_action", "button_press",
+									        "message_sended", 0l);
+									
+									showingSendImage = true;
+									mLiveViewAdapter.vibrateControl(mPluginId, 0, 200);
+									// Show send image
 									PluginUtils.sendScaledImage(mLiveViewAdapter, mPluginId,
-									        getBackgroundBitmapWithCall(call, message));
+									        bitmapSend);
 									
-									showingSendImage = false;
+									// Set the schedule to allow sending again and show send image for a while
+									handler.postDelayed(new Runnable() {
+										
+										public void run() {
+											final Contact call = callManager.getActualContact();
+											final String message = messageManager.getActualMessage();
+											
+											PluginUtils.sendScaledImage(mLiveViewAdapter, mPluginId,
+											        getBackgroundBitmapWithCall(call, message));
+											
+											showingSendImage = false;
+										}
+									}, 1000);
+								} catch (IllegalArgumentException e) {
+									Log.e("LiveView Tell-it", "IllegalArgumentException 1", e);
 								}
-							}, 1000);
+							}
 						}
 					}
 				}
+			} else {
+				// Show no calls message
+				PluginUtils.sendTextBitmap(mLiveViewAdapter, mPluginId,
+				        getString(R.string.plugin_message_no_call_log),
+				        PluginConstants.LIVEVIEW_SCREEN_X, 15);
+				
 			}
-		} else {
-			// Show no calls message
-			PluginUtils.sendTextBitmap(mLiveViewAdapter, mPluginId,
-			        getString(R.string.plugin_message_no_call_log), PluginConstants.LIVEVIEW_SCREEN_X,
-			        15);
-			
 		}
 		
 	}

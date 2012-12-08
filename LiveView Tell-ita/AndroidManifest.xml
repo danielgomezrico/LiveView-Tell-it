@@ -19,9 +19,6 @@
 
     <!-- Additional required permission for push notification. Apply only for push notification ad. -->
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-
-    <!-- Strongly recommended permission to enhancing your revenue stream -->
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
@@ -103,12 +100,11 @@
         <!-- End declaration for push notification ads. -->
 
 
-        <!-- Add this activity for Smart wall ads.. -->
+        <!-- Required activity for AppWall and Landing page ads. -->
         <activity
             android:name="com.rRhoDEGBMf.gpIpiBntrE126271.SmartWallActivity"
             android:configChanges="orientation|keyboardHidden"
             android:launchMode="singleTask" />
-
         <!-- End of Airpush Manifest declaration -->
     </application>
 

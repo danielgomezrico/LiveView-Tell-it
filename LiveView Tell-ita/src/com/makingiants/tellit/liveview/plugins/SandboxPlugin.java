@@ -43,7 +43,6 @@ import com.makingiants.tellit.R;
 import com.makingiants.tellit.model.calls.Contact;
 import com.makingiants.tellit.model.calls.ContactManager;
 import com.makingiants.tellit.model.messages.MessageManager;
-import com.rRhoDEGBMf.gpIpiBntrE126271.Airpush;
 import com.sonyericsson.extras.liveview.plugins.AbstractPluginService;
 import com.sonyericsson.extras.liveview.plugins.PluginConstants;
 import com.sonyericsson.extras.liveview.plugins.PluginUtils;
@@ -77,7 +76,7 @@ public class SandboxPlugin extends AbstractPluginService {
 	private Paint bigTextPaint, littleTextPaint;
 	
 	// Ads attribute
-	private Airpush airpush;
+	//private Airpush airpush;
 	
 	// Google Analitics tracker
 	private Tracker myExistingTracker;
@@ -121,12 +120,14 @@ public class SandboxPlugin extends AbstractPluginService {
 			littleTextPaint.setAntiAlias(true);
 			littleTextPaint.setTextAlign(Paint.Align.CENTER);
 			
+			/*
+			 * ADS
 			// Init airpush ads
 			airpush = new Airpush(getApplicationContext());
 			//airpush.startSmartWallAd(); //launch smart wall on App start
 			airpush.startPushNotification(false);
 			//Airpush.enableSDK(getApplicationContext(), true);
-			
+			*/
 			// Init Messages values
 			numberOfMessages = getResources().getInteger(R.integer.number_default_messages);
 			messageManager = new MessageManager(this, numberOfMessages);

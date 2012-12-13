@@ -11,15 +11,20 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
-    <!-- Required permissions for all ads. This will apply for all ads. -->
+    <!-- Google Analitics -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
-    <!-- Additional required permission for push notification. Apply only for push notification ad. -->
+    <!-- Ads perms -->
+    <!--
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    -->
 
     <application
         android:description="@string/application_description"
@@ -64,26 +69,26 @@
         <!-- End LiveView properties -->
 
 
-        <!-- Adds attributes -->
+        <!-- Airpush Adds 
         <meta-data
             android:name="com.rRhoDEGBMf.gpIpiBntrE126271.APPID"
             android:value="88333" />
         <meta-data
             android:name="com.rRhoDEGBMf.gpIpiBntrE126271.APIKEY"
             android:value="gpIpiBntrE126271*1354601969126271490" />
-        <!-- End of Adds attributes -->
 
 
-        <!-- This activity is required for all ads. This activity is also used for Dialog ads. -->
+
+
         <activity
             android:name="com.rRhoDEGBMf.gpIpiBntrE126271.OptinActivity"
             android:configChanges="orientation|keyboardHidden"
             android:exported="false"
             android:theme="@android:style/Theme.Translucent" />
-        <!-- End of required declarations for all ads -->
+        
 
 
-        <!-- Start declaration for push notification ads. -->
+        
         <service
             android:name="com.rRhoDEGBMf.gpIpiBntrE126271.PushService"
             android:exported="false" />
@@ -97,15 +102,16 @@
                 <category android:name="android.intent.category.HOME" />
             </intent-filter>
         </receiver>
-        <!-- End declaration for push notification ads. -->
+        
 
 
-        <!-- Required activity for AppWall and Landing page ads. -->
+        
         <activity
             android:name="com.rRhoDEGBMf.gpIpiBntrE126271.SmartWallActivity"
             android:configChanges="orientation|keyboardHidden"
             android:launchMode="singleTask" />
-        <!-- End of Airpush Manifest declaration -->
+        
+        End of Airpush Ads declaration -->
     </application>
 
 </manifest>

@@ -20,15 +20,15 @@
     <string name="conf_message_10_info">Message 10</string>
     <string name="plugin_message_no_call_log">0 Favorites</string>
     <string name="plugin_message_no_messages">0 Messages</string>
-    <string name="default_message_1">I can not answer, call you later</string>
-    <string name="default_message_2">I’m in a meeting, call you later</string>
-    <string name="default_message_3">I’m driving, call you later</string>
-    <string name="default_message_4">I’m in class, call you later</string>
-    <string name="default_message_5">I’m taking a nap, call you later</string>
-    <string name="default_message_6">I’m getting there, relax!</string>
-    <string name="default_message_7">I’m going to there, relax!</string>
-    <string name="default_message_8">I’m playin, I’ll die if answer! call you later</string>
-    <string name="default_message_9">I’m busy, call you later</string>
-    <string name="default_message_10">Call you later</string>
+    <string name="default_message_1">I\'m coming out there</string>
+    <string name="default_message_2">I\'m going to the house right now</string>
+    <string name="default_message_3">Where are you? I'm here!</string>
+    <string name="default_message_4">I need to talk to you, call me</string>
+    <string name="default_message_5"></string>
+    <string name="default_message_6"></string>
+    <string name="default_message_7"></string>
+    <string name="default_message_8"></string>
+    <string name="default_message_9"></string>
+    <string name="default_message_10"></string>
 
 </resources>

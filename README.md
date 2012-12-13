@@ -1,8 +1,10 @@
 # LiveView Tell-it Plugin [![Google Play](http://developer.android.com/images/brand/en_generic_rgb_wo_45.png)](https://play.google.com/store/apps/details?id=com.makingiants.answerit)
 
 <a href="https://play.google.com/store/apps/details?id=com.makingiants.answerit" alt="Download from Google Play">
-	<img src="http://dc201.4shared.com/img/4qS5ZZQo/0.4095983652860181/banner.png">
+	<img src="http://dc615.4shared.com/img/1Z9CAzIN/0.6737474162763446/tell_it_banner.png">
 </a>
+
+[![Google Play](http://developer.android.com/images/brand/en_generic_rgb_wo_45.png)](https://play.google.com/store/apps/details?id=com.makingiants.answerit) 
 
 This is a plugin for the LiveView device
 (a "smartwatch" for Android).

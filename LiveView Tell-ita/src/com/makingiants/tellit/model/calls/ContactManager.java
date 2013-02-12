@@ -50,7 +50,8 @@ public class ContactManager {
 	public Contact getActualContact() {
 		if (contacts.size() != 0) {
 			return contacts.get(actualContact);
-		} else {
+		}
+		else {
 			return null;
 		}
 	}
@@ -65,7 +66,8 @@ public class ContactManager {
 				actualContact = 0;
 			}
 			return contacts.get(actualContact);
-		} else {
+		}
+		else {
 			return null;
 		}
 		
@@ -81,7 +83,8 @@ public class ContactManager {
 				actualContact = contacts.size() - 1;
 			}
 			return contacts.get(actualContact);
-		} else {
+		}
+		else {
 			return null;
 		}
 	}

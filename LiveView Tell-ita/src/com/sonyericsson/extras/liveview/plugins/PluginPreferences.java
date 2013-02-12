@@ -31,11 +31,12 @@ import android.preference.PreferenceActivity;
  * shared preferences of the current user session.
  */
 public class PluginPreferences extends PreferenceActivity {
-    
+	
 	@Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        addPreferencesFromResource(getResources().getIdentifier("preferences", "xml", getPackageName()));
-    }
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		addPreferencesFromResource(getResources().getIdentifier("preferences",
+				"xml", getPackageName()));
+	}
 	
 }

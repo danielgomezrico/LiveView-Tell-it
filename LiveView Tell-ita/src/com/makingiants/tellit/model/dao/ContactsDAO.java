@@ -29,17 +29,20 @@ public class ContactsDAO {
 		try {
 			
 			// Define Wich data query
-			String[] projection = new String[] { ContactsContract.Contacts.STARRED,
-			        ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
-			        ContactsContract.CommonDataKinds.Phone.NUMBER,
-			        ContactsContract.CommonDataKinds.Phone.TIMES_CONTACTED };
+			String[] projection = new String[] {
+					ContactsContract.Contacts.STARRED,
+					ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME,
+					ContactsContract.CommonDataKinds.Phone.NUMBER,
+					ContactsContract.CommonDataKinds.Phone.TIMES_CONTACTED };
 			
 			// Where will be the query
 			Uri contactsUri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI;
 			
 			Cursor cursor = resolver.query(contactsUri, projection,
-			        ContactsContract.CommonDataKinds.Phone.STARRED + "=?", new String[] { "1" },
-			        ContactsContract.CommonDataKinds.Phone.TIMES_CONTACTED + " DESC");
+					ContactsContract.CommonDataKinds.Phone.STARRED + "=?",
+					new String[] { "1" },
+					ContactsContract.CommonDataKinds.Phone.TIMES_CONTACTED
+							+ " DESC");
 			
 			try {
 				if (cursor.moveToFirst()) {
@@ -47,11 +50,13 @@ public class ContactsDAO {
 					String number = null;
 					
 					do {
-						name = cursor.getString(cursor
-						        .getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
+						name = cursor
+								.getString(cursor
+										.getColumnIndex(ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME));
 						
-						number = cursor.getString(cursor
-						        .getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
+						number = cursor
+								.getString(cursor
+										.getColumnIndex(ContactsContract.CommonDataKinds.Phone.NUMBER));
 						
 						contacts.add(new Contact(name, number));
 						

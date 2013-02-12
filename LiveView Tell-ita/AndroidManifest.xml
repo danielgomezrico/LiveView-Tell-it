@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.makingiants.tellit"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    android:versionCode="2"
+    android:versionName="1.0.1" >
 
     <uses-sdk
-        android:minSdkVersion="7"
-        android:targetSdkVersion="10" />
+        android:minSdkVersion="4"
+        android:targetSdkVersion="17" />
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -23,7 +23,7 @@
     <!--
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
     -->
 
     <application
@@ -47,9 +47,9 @@
 
         <activity
             android:name="com.sonyericsson.extras.liveview.plugins.PluginPreferences"
-            android:label="@string/pluginname" >
+            android:label="Tell-it" >
             <intent-filter>
-                <action android:name=".liveview.plugins.PREFERENCES" />
+                <action android:name="com.makingiants.tellit.liveview.plugins.PREFERENCES" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -69,7 +69,8 @@
         <!-- End LiveView properties -->
 
 
-        <!-- Airpush Adds 
+        <!--
+        Airpush Adds 
         <meta-data
             android:name="com.rRhoDEGBMf.gpIpiBntrE126271.APPID"
             android:value="88333" />
@@ -111,7 +112,8 @@
             android:configChanges="orientation|keyboardHidden"
             android:launchMode="singleTask" />
         
-        End of Airpush Ads declaration -->
+        End of Airpush Ads declaration
+        -->
     </application>
 
 </manifest>

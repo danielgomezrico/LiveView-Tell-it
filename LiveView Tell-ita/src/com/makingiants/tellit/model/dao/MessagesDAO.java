@@ -18,7 +18,8 @@ public class MessagesDAO {
 	 */
 	public static String[] getMessages(Context context, int numberOfMessages) {
 		String[] messages = new String[numberOfMessages];
-		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
+		SharedPreferences prefs = PreferenceManager
+				.getDefaultSharedPreferences(context);
 		
 		// Key for prefs are "message_0" "message_1"
 		for (int i = 0; i < numberOfMessages; i++) {

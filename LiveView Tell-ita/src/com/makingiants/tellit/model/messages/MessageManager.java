@@ -46,7 +46,8 @@ public class MessageManager {
 	public String getActualMessage() {
 		if (messages.length != 0) {
 			return messages[actualMessage];
-		} else {
+		}
+		else {
 			return null;
 		}
 	}
@@ -67,7 +68,8 @@ public class MessageManager {
 			} while (message == null || message.equals(""));
 			
 			return messages[actualMessage];
-		} else {
+		}
+		else {
 			return null;
 		}
 	}
@@ -87,7 +89,8 @@ public class MessageManager {
 			} while (message == null || message.equals(""));
 			
 			return messages[actualMessage];
-		} else {
+		}
+		else {
 			return null;
 		}
 	}

@@ -2,7 +2,7 @@
     android:title="Tell-it Preferences" >
 
     <CheckBoxPreference
-        android:defaultValue="false"
+        android:defaultValue="true"
         android:key="pluginEnabled"
         android:order="0"
         android:title="@string/conf_enabled_info" />

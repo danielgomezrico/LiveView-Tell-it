@@ -37,8 +37,6 @@ import android.os.IBinder;
 import android.telephony.SmsManager;
 import android.util.Log;
 
-import com.google.analytics.tracking.android.EasyTracker;
-import com.google.analytics.tracking.android.Tracker;
 import com.makingiants.tellit.R;
 import com.makingiants.tellit.model.calls.Contact;
 import com.makingiants.tellit.model.calls.ContactManager;
@@ -48,64 +46,54 @@ import com.sonyericsson.extras.liveview.plugins.PluginConstants;
 import com.sonyericsson.extras.liveview.plugins.PluginUtils;
 
 public class SandboxPlugin extends AbstractPluginService {
-	
+
 	/**
 	 * How many messages are in preferences
 	 */
 	private static int numberOfMessages;
-	
+
 	// ****************************************************************
 	// Attributes
 	// ****************************************************************
-	
+
 	// Used to update the LiveView screen
 	private Handler handler;
-	
+
 	// Model managers
 	private MessageManager messageManager;
 	private ContactManager callManager;
-	
+
 	// Streams for background image in LiveView
 	private Bitmap bitmapBackground;
-	
+
 	// Send image attributes
 	private Bitmap bitmapSend;// Used to show send image while sending
 	private boolean showingSendImage;// Used to disable any interaction while
 										// bitmapSend is showed
-	
+
 	// Paint used for text
 	private Paint bigTextPaint, littleTextPaint;
-	
-	// Ads attribute
-	// private Airpush airpush;
-	
-	// Google Analitics tracker
-	private Tracker myExistingTracker;
-	
+
 	// ****************************************************************
 	// Service Overrides
 	// ****************************************************************
-	
+
 	@Override
 	public void onStart(final Intent intent, final int startId) {
 		super.onStart(intent, startId);
-		
+
 		if (handler == null) {
-			
+
 			// Init main handler
 			handler = new Handler();
-			
-			// Init google analitics
-			EasyTracker.getInstance().setContext(getApplicationContext());
-			myExistingTracker = EasyTracker.getTracker();
-			
+
 			// Init backgrounds
 			bitmapBackground = BitmapFactory.decodeStream(this.getResources()
 					.openRawResource(R.drawable.background));
-			
+
 			bitmapSend = BitmapFactory.decodeStream(this.getResources()
 					.openRawResource(R.drawable.background_sent));
-			
+
 			// Init paints
 			bigTextPaint = new Paint();
 			bigTextPaint.setColor(Color.WHITE);
@@ -113,14 +101,14 @@ public class SandboxPlugin extends AbstractPluginService {
 			bigTextPaint.setTypeface(Typeface.SANS_SERIF);
 			bigTextPaint.setAntiAlias(true);
 			bigTextPaint.setTextAlign(Paint.Align.CENTER);
-			
+
 			littleTextPaint = new Paint();
 			littleTextPaint.setColor(Color.WHITE);
 			littleTextPaint.setTextSize(11); // Text Size
 			littleTextPaint.setTypeface(Typeface.SANS_SERIF);
 			littleTextPaint.setAntiAlias(true);
 			littleTextPaint.setTextAlign(Paint.Align.CENTER);
-			
+
 			/*
 			 * ADS // Init airpush ads airpush = new
 			 * Airpush(getApplicationContext()); //airpush.startSmartWallAd();
@@ -132,37 +120,36 @@ public class SandboxPlugin extends AbstractPluginService {
 			numberOfMessages = getResources().getInteger(
 					R.integer.number_default_messages);
 			messageManager = new MessageManager(this, numberOfMessages);
-			
+
 			callManager = new ContactManager(this.getApplicationContext());
-			
-		}
-		else {
-			
+
+		} else {
+
 			callManager.updateContacts(this.getApplicationContext());
 		}
-		
+
 		showingSendImage = false;
-		
+
 	}
-	
+
 	@Override
 	public void onCreate() {
 		super.onCreate();
-		
+
 		// ...
 		// Do plugin specifics.
 		// ...
 	}
-	
+
 	@Override
 	public void onDestroy() {
 		super.onDestroy();
-		
+
 		// ...
 		// Do plugin specifics.
 		// ...
 	}
-	
+
 	/**
 	 * Plugin is just sending notifications.
 	 */
@@ -170,229 +157,219 @@ public class SandboxPlugin extends AbstractPluginService {
 	protected boolean isSandboxPlugin() {
 		return true;
 	}
-	
+
 	/**
 	 * Must be implemented. Starts plugin work, if any.
 	 */
 	@Override
 	protected void startWork() {
-		
+
 		// Check if plugin is enabled.
 		if (mSharedPreferences.getBoolean(
 				PluginConstants.PREFERENCES_PLUGIN_ENABLED, false)) {
 			// Track plugin started
-			myExistingTracker.trackView(getString(R.string.app_name));
-			
+
 			handler.postDelayed(new Runnable() {
-				
+
 				@Override
 				public void run() {
 					if (callManager.getContactsLength() != 0) {
 						final Contact call = callManager.getActualContact();
 						String message = messageManager.getActualMessage();
-						
+
 						if (message == null) {
 							message = getString(R.string.plugin_message_no_messages);
 						}
-						
+
 						PluginUtils.sendScaledImage(mLiveViewAdapter,
 								mPluginId,
 								getBackgroundBitmapWithCall(call, message));
-						
-					}
-					else {
+
+					} else {
 						// Show no calls message
 						PluginUtils.sendTextBitmap(mLiveViewAdapter, mPluginId,
 								getString(R.string.plugin_message_no_call_log),
 								PluginConstants.LIVEVIEW_SCREEN_X, 15);
 					}
 				}
-				
+
 			}, 1000);
 		}
-		
+
 	}
-	
+
 	/**
 	 * Must be implemented. Stops plugin work, if any.
 	 */
 	@Override
 	protected void stopWork() {
-		
+
 	}
-	
+
 	/**
 	 * Must be implemented.
 	 * 
-	 * PluginService has done connection and registering to the LiveView Service. 
+	 * PluginService has done connection and registering to the LiveView
+	 * Service.
 	 * 
-	 * If needed, do additional actions here, e.g. 
-	 * starting any worker that is needed.
+	 * If needed, do additional actions here, e.g. starting any worker that is
+	 * needed.
 	 */
 	@Override
 	protected void onServiceConnectedExtended(final ComponentName className,
 			final IBinder service) {
-		
+
 	}
-	
+
 	/**
 	 * Must be implemented.
 	 * 
-	 * PluginService has done disconnection from LiveView and service has been stopped. 
+	 * PluginService has done disconnection from LiveView and service has been
+	 * stopped.
 	 * 
 	 * Do any additional actions here.
 	 */
 	@Override
 	protected void onServiceDisconnectedExtended(final ComponentName className) {
-		
+
 	}
-	
+
 	/**
 	 * Must be implemented.
 	 * 
 	 * PluginService has checked if plugin has been enabled/disabled.
 	 * 
-	 * The shared preferences has been changed. Take actions needed. 
+	 * The shared preferences has been changed. Take actions needed.
 	 */
 	@Override
 	protected void onSharedPreferenceChangedExtended(
 			final SharedPreferences prefs, final String key) {
 		if (!key.equals("pluginEnabled")) {
 			final String message = prefs.getString(key, "");
-			
+
 			// Message key values are: message_#
 			final int messageNumber = Integer.parseInt(key.substring(key
 					.length() - 1));
-			
+
 			messageManager.addMessage(messageNumber, message);
-			
-			// track its
-			myExistingTracker.trackEvent("ui_action", "button_press",
-					"message_changed", 0l);
-			
+
 		}
 	}
-	
+
 	/**
 	 * This method is called by the LiveView application to start the plugin.
-	 * For sandbox plugins, this means when the user has pressed the action button to start the plugin.
+	 * For sandbox plugins, this means when the user has pressed the action
+	 * button to start the plugin.
 	 */
 	@Override
 	protected void startPlugin() {
 		// // Log.d(PluginConstants.LOG_TAG, "startPlugin");
-		
+
 		startWork();
 	}
-	
+
 	/**
-	 * This method is called by the LiveView application to stop the plugin.
-	 * For sandbox plugins, this means when the user has long-pressed the action button to stop the plugin.
+	 * This method is called by the LiveView application to stop the plugin. For
+	 * sandbox plugins, this means when the user has long-pressed the action
+	 * button to stop the plugin.
 	 */
 	@Override
 	protected void stopPlugin() {
 		// // Log.d(PluginConstants.LOG_TAG, "stopPlugin");
 		stopWork();
 	}
-	
+
 	// ****************************************************************
 	// Events
 	// ****************************************************************
-	
+
 	/**
-	 * Sandbox mode only. When a user presses any buttons on the LiveView device, this method will be called.
+	 * Sandbox mode only. When a user presses any buttons on the LiveView
+	 * device, this method will be called.
 	 */
 	@Override
 	protected void button(final String buttonType, final boolean doublepress,
 			final boolean longpress) {
-		
+
 		if (mSharedPreferences.getBoolean(
 				PluginConstants.PREFERENCES_PLUGIN_ENABLED, false)) {
-			
+
 			if (callManager.getContactsLength() != 0) {
 				if (!showingSendImage) {
 					if (buttonType.equalsIgnoreCase(PluginConstants.BUTTON_UP)) {
-						
+
 						final Contact call = callManager.getPreviousContact();
 						String message = messageManager.getActualMessage();
-						
+
 						if (message == null) {
 							message = getString(R.string.plugin_message_no_messages);
 						}
-						
+
 						PluginUtils.sendScaledImage(mLiveViewAdapter,
 								mPluginId,
 								getBackgroundBitmapWithCall(call, message));
-						
-					}
-					else if (buttonType
+
+					} else if (buttonType
 							.equalsIgnoreCase(PluginConstants.BUTTON_DOWN)) {
-						
+
 						final Contact call = callManager.getNextContact();
 						String message = messageManager.getActualMessage();
-						
+
 						if (message == null) {
 							message = getString(R.string.plugin_message_no_messages);
 						}
-						
+
 						PluginUtils.sendScaledImage(mLiveViewAdapter,
 								mPluginId,
 								getBackgroundBitmapWithCall(call, message));
-						
-					}
-					else if (buttonType
+
+					} else if (buttonType
 							.equalsIgnoreCase(PluginConstants.BUTTON_LEFT)) {
-						
+
 						final Contact call = callManager.getActualContact();
 						String message = messageManager.getPreviousMessage();
-						
+
 						if (message == null) {
 							message = getString(R.string.plugin_message_no_messages);
 						}
-						
+
 						PluginUtils.sendScaledImage(mLiveViewAdapter,
 								mPluginId,
 								getBackgroundBitmapWithCall(call, message));
-						
-					}
-					else if (buttonType
+
+					} else if (buttonType
 							.equalsIgnoreCase(PluginConstants.BUTTON_RIGHT)) {
-						
+
 						final Contact call = callManager.getActualContact();
 						String message = messageManager.getNextMessage();
-						
+
 						if (message == null) {
 							message = getString(R.string.plugin_message_no_messages);
 						}
-						
+
 						PluginUtils.sendScaledImage(mLiveViewAdapter,
 								mPluginId,
 								getBackgroundBitmapWithCall(call, message));
-						
-					}
-					else if (buttonType
+
+					} else if (buttonType
 							.equalsIgnoreCase(PluginConstants.BUTTON_SELECT)) {
-						
+
 						if (!showingSendImage) {
-							
+
 							// Send message
 							final Contact call = callManager.getActualContact();
 							final String message = messageManager
 									.getActualMessage();
-							
+
 							if (call != null && message != null) {
 								try {
 									final SmsManager shortMessageManager = SmsManager
 											.getDefault();
-									
+
 									shortMessageManager.sendTextMessage(
 											call.getNumber(), null, message,
 											null, null);
-									
-									// Track how many messages sends
-									myExistingTracker.trackEvent("ui_action",
-											"button_press", "message_sended",
-											0l);
-									
+
 									showingSendImage = true;
 									mLiveViewAdapter.vibrateControl(mPluginId,
 											0, 200);
@@ -400,18 +377,18 @@ public class SandboxPlugin extends AbstractPluginService {
 									PluginUtils.sendScaledImage(
 											mLiveViewAdapter, mPluginId,
 											bitmapSend);
-									
+
 									// Set the schedule to allow sending again
 									// and show send image for a while
 									handler.postDelayed(new Runnable() {
-										
+
 										@Override
 										public void run() {
 											final Contact call = callManager
 													.getActualContact();
 											final String message = messageManager
 													.getActualMessage();
-											
+
 											PluginUtils
 													.sendScaledImage(
 															mLiveViewAdapter,
@@ -419,7 +396,7 @@ public class SandboxPlugin extends AbstractPluginService {
 															getBackgroundBitmapWithCall(
 																	call,
 																	message));
-											
+
 											showingSendImage = false;
 										}
 									}, 1000);
@@ -431,20 +408,20 @@ public class SandboxPlugin extends AbstractPluginService {
 						}
 					}
 				}
-			}
-			else {
+			} else {
 				// Show no calls message
 				PluginUtils.sendTextBitmap(mLiveViewAdapter, mPluginId,
 						getString(R.string.plugin_message_no_call_log),
 						PluginConstants.LIVEVIEW_SCREEN_X, 15);
-				
+
 			}
 		}
-		
+
 	}
-	
+
 	/**
-	 * Called by the LiveView application to indicate the capabilites of the LiveView device.
+	 * Called by the LiveView application to indicate the capabilites of the
+	 * LiveView device.
 	 */
 	@Override
 	protected void displayCaps(final int displayWidthPx,
@@ -453,51 +430,53 @@ public class SandboxPlugin extends AbstractPluginService {
 		// displayWidthPx + ", height "
 		// + displayHeigthPx);
 	}
-	
+
 	/**
-	 * Called by the LiveView application when the plugin has been kicked out by the framework.
+	 * Called by the LiveView application when the plugin has been kicked out by
+	 * the framework.
 	 */
 	@Override
 	protected void onUnregistered() {
 		// // Log.d(PluginConstants.LOG_TAG, "onUnregistered");
 		stopWork();
 	}
-	
+
 	/**
-	 * When a user presses the "open in phone" button on the LiveView device, this method is called.
-	 * You could e.g. open a browser and go to a specific URL, or open the music player.
+	 * When a user presses the "open in phone" button on the LiveView device,
+	 * this method is called. You could e.g. open a browser and go to a specific
+	 * URL, or open the music player.
 	 */
 	@Override
 	protected void openInPhone(final String openInPhoneAction) {
 		// // Log.d(PluginConstants.LOG_TAG, "openInPhone: " +
 		// openInPhoneAction);
 	}
-	
+
 	/**
-	 * Sandbox mode only. Called by the LiveView application when the screen mode has changed.
-	 * 0 = screen is off, 1 = screen is on
+	 * Sandbox mode only. Called by the LiveView application when the screen
+	 * mode has changed. 0 = screen is off, 1 = screen is on
 	 */
 	@Override
 	protected void screenMode(final int mode) {
 	}
-	
+
 	// ****************************************************************
 	// GUI Changes
 	// ****************************************************************
-	
+
 	private Bitmap getBackgroundBitmapWithCall(final Contact call,
 			final String message) {
-		
+
 		final Bitmap background = bitmapBackground.copy(Bitmap.Config.RGB_565,
 				true);
-		
+
 		final Canvas canvas = new Canvas(background);
-		
+
 		// Draw the name and number
 		final String number = call.getNumber();
 		final String[] name = trimText(call.getName(), 14);
 		if (name.length == 2) {
-			
+
 			canvas.drawText(name[0], PluginConstants.LIVEVIEW_SCREEN_X / 2, 35,
 					bigTextPaint);
 			canvas.drawText(name[1], PluginConstants.LIVEVIEW_SCREEN_X / 2, 50,
@@ -505,15 +484,14 @@ public class SandboxPlugin extends AbstractPluginService {
 			canvas.drawText(number,
 					(PluginConstants.LIVEVIEW_SCREEN_X - number.length()) / 2,
 					65, littleTextPaint);
-		}
-		else {
-			
+		} else {
+
 			canvas.drawText(name[0], PluginConstants.LIVEVIEW_SCREEN_X / 2, 40,
 					bigTextPaint);
 			canvas.drawText(number,
 					(PluginConstants.LIVEVIEW_SCREEN_X - number.length()) / 2,
 					55, littleTextPaint);
-			
+
 		}
 		// Draw message
 		final String[] messageTrimed = trimText(message, 18);
@@ -523,36 +501,36 @@ public class SandboxPlugin extends AbstractPluginService {
 			canvas.drawText(messageTrimed[1],
 					PluginConstants.LIVEVIEW_SCREEN_X / 2, 110, littleTextPaint);
 		}
-		
+
 		return background;
 	}
-	
+
 	/**
 	 * Trim a message in two lines. Each line must have max length <= maxLength
 	 * and second line will contain '...' at the end.
 	 * 
 	 * @param message
 	 * @param maxLength
-	 * @return String array with length = 1 if there message length is <= maxLength
-	 * otherwise String array with length = 2 with each line and last one with '...' chars in the end
+	 * @return String array with length = 1 if there message length is <=
+	 *         maxLength otherwise String array with length = 2 with each line
+	 *         and last one with '...' chars in the end
 	 */
 	private String[] trimText(final String message, final int maxLength) {
 		if (message.length() <= maxLength) {
-			
+
 			return new String[] { message };
-			
-		}
-		else {
-			
+
+		} else {
+
 			final String message1 = message.substring(0, maxLength);
 			String message2 = message.substring(maxLength, message.length());
-			
+
 			if (message2.length() > maxLength) {
 				message2 = message2.substring(0, maxLength - 3) + "...";
 			}
-			
+
 			return new String[] { message1, message2 };
-			
+
 		}
 	}
 }

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Tell-it</string>
+    <!-- The following strings needs to be defined in order for the Plugin to function. -->
+    <string name="pluginname">Tell-it</string>
+    <string name="intent_preferences">com.makingiants.tellit.liveview.plugins.PREFERENCES</string>
+    <string name="intent_service">com.makingiants.tellit.liveview.plugins.tellitservice</string>
+    <string name="application_description">Extends:com.sonyericsson.extras.liveview</string>
+    <string name="conf_enabled_info">Enabled</string>
+    <string name="conf_message_1_info">Mensagem 1</string>
+    <string name="conf_message_2_info">Mensagem 2</string>
+    <string name="conf_message_3_info">Mensagem 3</string>
+    <string name="conf_message_4_info">Mensagem 4</string>
+    <string name="conf_message_5_info">Mensagem 5</string>
+    <string name="conf_message_6_info">Mensagem 6</string>
+    <string name="conf_message_7_info">Mensagem 7</string>
+    <string name="conf_message_8_info">Mensagem 8</string>
+    <string name="conf_message_9_info">Mensagem 9</string>
+    <string name="conf_message_10_info">Mensagem 10</string>
+    <string name="plugin_message_no_call_log">0 Favoritos</string>
+    <string name="plugin_message_no_messages">0 Mensagems</string>
+    <string name="default_message_1">Eu estou indo</string>
+    <string name="default_message_2">Estou indo para casa agora</string>
+    <string name="default_message_3">Onde você está? Estou aqui!</string>
+    <string name="default_message_4">Preciso falar com você, me liga</string>
+    <string name="default_message_5"></string>
+    <string name="default_message_6"></string>
+    <string name="default_message_7"></string>
+    <string name="default_message_8"></string>
+    <string name="default_message_9"></string>
+    <string name="default_message_10"></string>
+
+</resources>

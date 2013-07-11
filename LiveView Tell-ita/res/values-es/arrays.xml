@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- In app Billing -->
+    <string-array name="in_app_messages">
+        <item>Dar un refresco!</item>
+        <item>Dar una hamburguesa!</item>
+        <item>Dar una cerveza!</item>
+        <item>Dar una pizza!</item>
+    </string-array>
+
+</resources>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.makingiants.tellit"
-    android:versionCode="4"
+    android:versionCode="5"
     android:versionName="1.0.2" >
 
     <uses-sdk
@@ -14,6 +14,7 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="com.android.vending.BILLING" />
 
     <application
         android:description="@string/application_description"
@@ -48,6 +49,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.makingiants.tellit.InAppBuyActivity"
+            android:theme="@android:style/Theme.Black.NoTitleBar" />
 
         <receiver android:name="com.sonyericsson.extras.liveview.plugins.PluginReceiver" >
             <intent-filter>

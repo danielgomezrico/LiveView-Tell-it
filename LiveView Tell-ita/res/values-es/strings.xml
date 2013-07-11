@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Tell-it</string>
-    <!-- The following strings needs to be defined in order for the Plugin to function. -->
-    <string name="pluginname">Tell-it</string>
-    <string name="intent_preferences">com.makingiants.tellit.liveview.plugins.PREFERENCES</string>
-    <string name="intent_service">com.makingiants.tellit.liveview.plugins.tellitservice</string>
-    <string name="application_description">Extends:com.sonyericsson.extras.liveview</string>
     <string name="conf_enabled_info">Enabled</string>
     <string name="conf_message_1_info">Mensaje 1</string>
     <string name="conf_message_2_info">Mensaje 2</string>
@@ -30,5 +24,10 @@
     <string name="default_message_8"></string>
     <string name="default_message_9"></string>
     <string name="default_message_10"></string>
+
+    <!-- In app Billing -->
+    <string name="conf_in_app_title">Ayudanos a alimentar los GIANTS!</string>
+    <string name="conf_in_app_summary">Ayude con comida y bebidas para desarrollar mejores GIANTS!</string>
+    <string name="in_app_message_thanks">Muchas gracias por contribuir! Ahora podemos hacer mas GIANTS!</string>
 
 </resources>

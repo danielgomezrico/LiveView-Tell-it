@@ -37,6 +37,7 @@ import android.os.IBinder;
 import android.telephony.SmsManager;
 import android.util.Log;
 
+import com.makingiants.tellit.InAppBuyActivity;
 import com.makingiants.tellit.R;
 import com.makingiants.tellit.model.calls.Contact;
 import com.makingiants.tellit.model.calls.ContactManager;
@@ -109,13 +110,6 @@ public class SandboxPlugin extends AbstractPluginService {
 			littleTextPaint.setAntiAlias(true);
 			littleTextPaint.setTextAlign(Paint.Align.CENTER);
 
-			/*
-			 * ADS // Init airpush ads airpush = new
-			 * Airpush(getApplicationContext()); //airpush.startSmartWallAd();
-			 * //launch smart wall on App start
-			 * airpush.startPushNotification(false);
-			 * //Airpush.enableSDK(getApplicationContext(), true);
-			 */
 			// Init Messages values
 			numberOfMessages = getResources().getInteger(
 					R.integer.number_default_messages);
@@ -244,7 +238,7 @@ public class SandboxPlugin extends AbstractPluginService {
 	@Override
 	protected void onSharedPreferenceChangedExtended(
 			final SharedPreferences prefs, final String key) {
-		if (!key.equals("pluginEnabled")) {
+		if (!key.equals("pluginEnabled") && !key.equals("in_app")) {
 			final String message = prefs.getString(key, "");
 
 			// Message key values are: message_#
@@ -252,6 +246,26 @@ public class SandboxPlugin extends AbstractPluginService {
 					.length() - 1));
 
 			messageManager.addMessage(messageNumber, message);
+		}
+
+		if (key.equals("in_app")) {
+
+			String sku = prefs.getString(key, "");
+
+			SharedPreferences.Editor editor = prefs.edit();
+			editor.putString(key, "-1");
+			// editor.remove(key);
+			editor.commit();
+
+			Intent inAppIntent = new Intent(this.getApplicationContext(),
+					InAppBuyActivity.class);
+
+			// prefs.getString(key, "");
+
+			inAppIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			inAppIntent.putExtra(InAppBuyActivity.EXTRA_KEY_SKU, sku);
+
+			startActivity(inAppIntent);
 
 		}
 	}

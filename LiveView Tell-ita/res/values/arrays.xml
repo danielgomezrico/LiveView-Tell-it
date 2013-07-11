@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- In app Billing -->
+    <string-array name="in_app_sku" translatable="false">
+        <item>com.makingiants.tellit.in_app.donation1</item>
+        <item>com.makingiants.tellit.in_app.donation2</item>
+        <item>com.makingiants.tellit.in_app.donation3</item>
+        <item>com.makingiants.tellit.in_app.donation4</item>
+    </string-array>
+    <string-array name="in_app_messages">
+        <item>Give a drink!</item>
+        <item>Give a hamburger!</item>
+        <item>Give a beer!</item>
+        <item>Give a pizza!</item>
+    </string-array>
+
+</resources>

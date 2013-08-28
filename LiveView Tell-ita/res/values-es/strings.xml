@@ -26,8 +26,8 @@
     <string name="default_message_10"></string>
 
     <!-- In app Billing -->
-    <string name="conf_in_app_title">Ayudanos a alimentar los GIANTS!</string>
-    <string name="conf_in_app_summary">Ayude con comida y bebidas para desarrollar mejores GIANTS!</string>
-    <string name="in_app_message_thanks">Muchas gracias por contribuir! Ahora podemos hacer mas GIANTS!</string>
+    <string name="conf_in_app_title">Ayudanos!</string>
+    <string name="conf_in_app_summary">Ayude con comida y bebidas para desarrollar mejores apps!</string>
+    <string name="in_app_message_thanks">Muchas gracias por contribuir! Ahora podemos hacer mas apps!</string>
 
 </resources>

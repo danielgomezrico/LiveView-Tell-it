@@ -9,9 +9,10 @@
             android:title="@string/conf_enabled_info" />
         <!-- Add your additional preferences here. -->
     </PreferenceCategory>
-    <PreferenceCategory android:title="Feed Giants!" >
+    <PreferenceCategory android:title="Contribute!" >
         <ListPreference
             defaultValue="-1"
+            android:dependency="pluginEnabled"
             android:entries="@array/in_app_messages"
             android:entryValues="@array/in_app_sku"
             android:key="in_app"

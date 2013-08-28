@@ -34,10 +34,10 @@
     <string name="default_message_10"></string>
 
     <!-- In app Billing -->
-    <string name="conf_in_app_title">Help us feed the GIANTS!</string>
-    <string name="conf_in_app_summary">Give food and drinks to develop better giants!</string>
     <string name="in_app_key" translatable="false">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjFj9w41iXCxV2MEOl2ZzKkJrZnwLgYDuBZzZekKWs0kwRxZ+5A4VBX0HkS7k/SL/CbsR0qnF4eAOJq0Ox1we6PRF3VuvIUCp4M3Xu3f0vkSQyX/VHpRTO5TQ92YGABue/RDRthEre/Ncqnazy51bih2QHfjERoB2YEmW3Ol1xAdGHS7RVzLjwKdlU+oJosRM2kSCorqB64mZJnTYzbKRreb9ch/qbk/UrsOquZh07sXKBcabv0H5KQgl2qwvfYP0h5hb03xgY2PkIh3lck8CPccl4yJu4wKut/s0aItsrGzT/BDcZ9VAncsKJs3XL5L5zBT+YqPQWsYBSqjhkPcybwIDAQAB</string>
-    <string name="in_app_message_thanks">Thanks for giving! now we can do more GIANTS!</string>
     <string name="in_app_message_error" translatable="false">There is an error with the donation, please wait 5 minutes and try again, 5 minutes is not much! :P</string>
+    <string name="conf_in_app_title">Help us!</string>
+    <string name="conf_in_app_summary">Give food and drinks to develop better apps!</string>
+    <string name="in_app_message_thanks">Thanks for giving! now we can do more apps!</string>
 
 </resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="in_app_messages">
+        <item>Give a drink!</item>
+        <item>Give a hamburger!</item>
+        <item>Give a beer!</item>
+        <item>Give a pizza!</item>
+    </string-array>
+
+</resources>

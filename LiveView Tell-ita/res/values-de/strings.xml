@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- UI -->
+    <string name="conf_enabled_info">Enabled</string>
+    <string name="conf_message_1_info">Message 1</string>
+    <string name="conf_message_2_info">Message 2</string>
+    <string name="conf_message_3_info">Message 3</string>
+    <string name="conf_message_4_info">Message 4</string>
+    <string name="conf_message_5_info">Message 5</string>
+    <string name="conf_message_6_info">Message 6</string>
+    <string name="conf_message_7_info">Message 7</string>
+    <string name="conf_message_8_info">Message 8</string>
+    <string name="conf_message_9_info">Message 9</string>
+    <string name="conf_message_10_info">Message 10</string>
+    <string name="plugin_message_no_call_log">0 Favorites</string>
+    <string name="plugin_message_no_messages">0 Messages</string>
+    <string name="default_message_1">Ich komme raus</string>
+    <string name="default_message_2">Ich gehe jetzt nach Hause</string>
+    <string name="default_message_3">Wo bist du? Ich bin hier!</string>
+    <string name="default_message_4">Ich muss mit dir reden, ruf mich an</string>
+    <string name="default_message_5"></string>
+    <string name="default_message_6"></string>
+    <string name="default_message_7"></string>
+    <string name="default_message_8"></string>
+    <string name="default_message_9"></string>
+    <string name="default_message_10"></string>
+
+    <!-- In app Billing -->
+    <string name="conf_in_app_title">Help us!</string>
+    <string name="conf_in_app_summary">Give food and drinks to develop better apps!</string>
+    <string name="in_app_message_thanks">Thanks for giving! now we can do more apps!</string>
+
+</resources>

@@ -1,4 +1,4 @@
-# LiveView Tell-it Plugin [![Google Play](http://developer.android.com/images/brand/en_generic_rgb_wo_45.png)](https://play.google.com/store/apps/details?id=com.makingiants.answerit)
+# LiveView Tell-it Plugin [![Google Play](http://developer.android.com/images/brand/en_generic_rgb_wo_45.png)](https://play.google.com/store/apps/details?id=com.makingiants.tellit)
 
 <a href="https://play.google.com/store/apps/details?id=com.makingiants.tellit" alt="Download from Google Play">
 	<img src="http://1.bp.blogspot.com/-EmIVGoZa0QU/UMoeGXzviNI/AAAAAAAABlQ/F26XPTA-MhU/s640/tell+it+banner.png">

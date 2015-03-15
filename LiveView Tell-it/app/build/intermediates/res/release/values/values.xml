@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/Users/danielgomez22/AndroidStudioProjects/LiveView%20Tell-it/app/src/main/res/values/arrays.xml -->
+    <eat-comment/>
+    <string-array name="in_app_messages">
+        <item>Give a drink!</item>
+        <item>Give a hamburger!</item>
+        <item>Give a beer!</item>
+        <item>Give a pizza!</item>
+    </string-array>
+    <string-array name="in_app_sku" translatable="false">
+        <item>com.makingiants.tellit.in_app.donation1</item>
+        <item>com.makingiants.tellit.in_app.donation2</item>
+        <item>com.makingiants.tellit.in_app.donation3</item>
+        <item>com.makingiants.tellit.in_app.donation4</item>
+    </string-array>
+    <!-- From: file:/Users/danielgomez22/AndroidStudioProjects/LiveView%20Tell-it/app/src/main/res/values/integers.xml -->
+    <eat-comment/>
+    <item format="integer" name="number_default_messages" type="integer">10</item>
+    <!-- From: file:/Users/danielgomez22/AndroidStudioProjects/LiveView%20Tell-it/app/src/main/res/values/strings.xml -->
+    <eat-comment/>
+    <string name="app_name" translatable="false">Tell-it</string>
+    <string name="application_description" translatable="false">Extends:com.sonyericsson.extras.liveview</string>
+    <string name="conf_enabled_info">Enabled</string>
+    <string name="conf_in_app_summary">Give food and drinks to develop better apps!</string>
+    <string name="conf_in_app_title">Help us!</string>
+    <string name="conf_message_10_info">Message 10</string>
+    <string name="conf_message_1_info">Message 1</string>
+    <string name="conf_message_2_info">Message 2</string>
+    <string name="conf_message_3_info">Message 3</string>
+    <string name="conf_message_4_info">Message 4</string>
+    <string name="conf_message_5_info">Message 5</string>
+    <string name="conf_message_6_info">Message 6</string>
+    <string name="conf_message_7_info">Message 7</string>
+    <string name="conf_message_8_info">Message 8</string>
+    <string name="conf_message_9_info">Message 9</string>
+    <string name="default_message_1">I\'m coming out there</string>
+    <string name="default_message_10"/>
+    <string name="default_message_2">I\'m going to the house right now</string>
+    <string name="default_message_3">Where are you? I\'m here!</string>
+    <string name="default_message_4">I need to talk to you, call me</string>
+    <string name="default_message_5"/>
+    <string name="default_message_6"/>
+    <string name="default_message_7"/>
+    <string name="default_message_8"/>
+    <string name="default_message_9"/>
+    <string name="in_app_key" translatable="false">MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAjFj9w41iXCxV2MEOl2ZzKkJrZnwLgYDuBZzZekKWs0kwRxZ+5A4VBX0HkS7k/SL/CbsR0qnF4eAOJq0Ox1we6PRF3VuvIUCp4M3Xu3f0vkSQyX/VHpRTO5TQ92YGABue/RDRthEre/Ncqnazy51bih2QHfjERoB2YEmW3Ol1xAdGHS7RVzLjwKdlU+oJosRM2kSCorqB64mZJnTYzbKRreb9ch/qbk/UrsOquZh07sXKBcabv0H5KQgl2qwvfYP0h5hb03xgY2PkIh3lck8CPccl4yJu4wKut/s0aItsrGzT/BDcZ9VAncsKJs3XL5L5zBT+YqPQWsYBSqjhkPcybwIDAQAB</string>
+    <string name="in_app_message_error" translatable="false">There is an error with the donation, please wait 5 minutes and try again, 5 minutes is not much! :P</string>
+    <string name="in_app_message_thanks">Thanks for giving! now we can do more apps!</string>
+    <string name="intent_preferences" translatable="false">com.makingiants.tellit.liveview.plugins.PREFERENCES</string>
+    <string name="intent_service" translatable="false">com.makingiants.tellit.liveview.plugins.tellitservice</string>
+    <string name="plugin_message_no_call_log">0 Favorites</string>
+    <string name="plugin_message_no_messages">0 Messages</string>
+    <string name="pluginname" translatable="false">Tell-it</string>
+</resources>

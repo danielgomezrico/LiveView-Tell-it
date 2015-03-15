@@ -14,7 +14,7 @@ Send this messages without having to get your phone out!
 
 You can predefine your messages.
 
-Developed using Eclipse and Android Plugin
+Updated to Android Studio 1.1
 
 
 ## License

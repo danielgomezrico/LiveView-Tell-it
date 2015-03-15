@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- From: file:/Users/danielgomez22/AndroidStudioProjects/LiveView%20Tell-it/app/src/main/res/values-es/arrays.xml -->
+    <eat-comment/>
+    <string-array name="in_app_messages">
+        <item>Dar un refresco!</item>
+        <item>Dar una hamburguesa!</item>
+        <item>Dar una cerveza!</item>
+        <item>Dar una pizza!</item>
+    </string-array>
+    <!-- From: file:/Users/danielgomez22/AndroidStudioProjects/LiveView%20Tell-it/app/src/main/res/values-es/strings.xml -->
+    <eat-comment/>
+    <string name="conf_enabled_info">Enabled</string>
+    <string name="conf_in_app_summary">Ayude con comida y bebidas para desarrollar mejores apps!</string>
+    <string name="conf_in_app_title">Ayudanos!</string>
+    <string name="conf_message_10_info">Mensaje 10</string>
+    <string name="conf_message_1_info">Mensaje 1</string>
+    <string name="conf_message_2_info">Mensaje 2</string>
+    <string name="conf_message_3_info">Mensaje 3</string>
+    <string name="conf_message_4_info">Mensaje 4</string>
+    <string name="conf_message_5_info">Mensaje 5</string>
+    <string name="conf_message_6_info">Mensaje 6</string>
+    <string name="conf_message_7_info">Mensaje 7</string>
+    <string name="conf_message_8_info">Mensaje 8</string>
+    <string name="conf_message_9_info">Mensaje 9</string>
+    <string name="default_message_1">Ya voy a salir para allá</string>
+    <string name="default_message_10"/>
+    <string name="default_message_2">Ya voy yendo para la casa</string>
+    <string name="default_message_3">¿Dónde estás? ya llegué</string>
+    <string name="default_message_4">Necesito hablar con vos, llámame</string>
+    <string name="default_message_5"/>
+    <string name="default_message_6"/>
+    <string name="default_message_7"/>
+    <string name="default_message_8"/>
+    <string name="default_message_9"/>
+    <string name="in_app_message_thanks">Muchas gracias por contribuir! Ahora podemos hacer mas apps!</string>
+    <string name="plugin_message_no_call_log">0 Favoritos</string>
+    <string name="plugin_message_no_messages">0 Mensajes</string>
+</resources>
